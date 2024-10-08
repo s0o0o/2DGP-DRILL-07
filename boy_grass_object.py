@@ -28,6 +28,29 @@ class Boy:
     def draw(self):
         self.image.clip_draw(self.frame*100, 0, 100,100,self.x,self.y)
 
+class sBall:
+    def __init__(self):
+        self.x, self.y = random.randint(30,700), 599
+        self.image = load_image('ball21x21.png')
+        self.speed = random.randint(5,10)
+
+    def update(self):
+        self.y -= self.speed
+
+    def draw(self):
+        self.image.draw(self.x,self.y)
+
+class lBall:
+    def __init__(self):
+        self.x, self.y = random.randint(30, 700), 599
+        self.image = load_image('ball41x41.png')
+        self.speed = random.randint(5, 10)
+
+    def update(self):
+        self.y -= self.speed
+
+    def draw(self):
+        self.image.draw(self.x,self.y)
 
 
 def handle_events():
@@ -42,7 +65,7 @@ def handle_events():
 
 def reset_world():
     global running
-    global grass, team, world, sBall, lBall
+    global grass, team, world, sball, lball
     running = True
 
     world = []
