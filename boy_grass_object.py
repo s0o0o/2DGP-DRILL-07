@@ -29,6 +29,7 @@ class Boy:
         self.image.clip_draw(self.frame*100, 0, 100,100,self.x,self.y)
 
 
+
 def handle_events():
     global running
     events = get_events()
@@ -41,32 +42,38 @@ def handle_events():
 
 def reset_world():
     global running
-    global grass, team
+    global grass, team, world, sBall, lBall
     running = True
+
+    world = []
     grass = Grass() # 잔디를 찍어낸다. 생성한다.
     team = [Boy() for i in range (10)]
+    sball = [sBall() for i in range (10)]
+    lball = [lBall() for i in range (10)]
+
+    world.append(grass)
+    world += team
+    world += sball
+    world += lball
 
 running = True
 
 def update_world():
-    grass.update() # 객체의 상태를 업데이트. 즉 시뮬레이션
-    for boy in team:
-        boy.update()
-    pass
+   # 객체의 상태를 업데이트. 즉 시뮬레이션
+   for o in world:
+       o.update()
+
 
 def render_world():
     clear_canvas()
-    grass.draw()
-    for boy in team:
-        boy.draw()
+    for o in world:
+        o.draw()
     update_canvas()
-    delay(0.05)
+    delay(0.03)
 
 
 
 open_canvas()
-
-
 
 
 # initialization code
