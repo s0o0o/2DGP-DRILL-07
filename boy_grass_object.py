@@ -32,13 +32,13 @@ class sBall:
     def __init__(self):
         self.x, self.y = random.randint(30,700), 599
         self.image = load_image('ball21x21.png')
-        self.speed = random.randint(5,10)
+        self.speed = random.randint(5,15)
         self.isMove = True
 
     def update(self):
         if(self.isMove):
             self.y -= self.speed
-            if (self.y < 80):
+            if (self.y < 70):
                 self.isMove = False
 
     def draw(self):
@@ -48,7 +48,7 @@ class lBall:
     def __init__(self):
         self.x, self.y = random.randint(30, 700), 599
         self.image = load_image('ball41x41.png')
-        self.speed = random.randint(5, 10)
+        self.speed = random.randint(5, 15)
         self.isMove = True
 
     def update(self):
